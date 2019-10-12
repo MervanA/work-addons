@@ -1,0 +1,25 @@
+#Examples of customizable settings (refer to the moshell file to see a complete list
+#of supported user variables or print them using the "uv" command)
+#take off the # sign at beginning of line to uncomment
+
+#prompt_highlight=1
+#set_window_title=1
+
+#Alias examples:
+alias ter te log read
+alias tec te log clear
+alias llc llog -c
+alias ll llog
+alias lll llog -l
+alias err te log read |grep ERROR:
+
+#######################################################
+# Upgrades here and there
+
+python=/usr/bin/python2
+moscommandsize=100
+
+#######################################################
+# Other Aliases
+
+alias vswr pipe hget RfPort=[^R] vswrValue@returnLoss | $gawk -f ~/MoshellAddOn/vswr.awk
