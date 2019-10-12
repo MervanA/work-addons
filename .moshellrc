@@ -17,7 +17,6 @@ alias err te log read |grep ERROR:
 # Upgrades here and there
 
 python=/usr/bin/python2
-moscommandsize=100
 
 #######################################################
 # Other Aliases
