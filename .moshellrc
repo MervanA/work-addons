@@ -14,9 +14,11 @@ alias lll llog -l
 alias err te log read |grep ERROR:
 
 #######################################################
-# Upgrades here and there
+# here and there
 
 python=/usr/bin/python2
+logdir=/home/fstick/eric/moshell_logfiles
+jarxmldir=/home/fstick/eric/jarxml
 
 #######################################################
 # Other Aliases
