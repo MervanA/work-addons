@@ -1,6 +1,6 @@
-# MoshellAddOn
-stuff to help with moshell
+# MoshellBible
 
-make sure you have a working Moshell
-download (clone) the repo to your home folder
-add .moshellrc to your homefolder or symlink it
+plan is to prep Moshell Quick 'snipit' like toosl and guides
+
+
+make sure you have a working Moshell (some commands rquire v19+)
