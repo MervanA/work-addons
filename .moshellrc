@@ -23,4 +23,5 @@ jarxmldir=/home/fstick/eric/jarxml
 #######################################################
 # Other Aliases
 
-alias vswr pipe hget RfPort=[^R] vswrValue@returnLoss | $gawk -f ~/eric/moshellbible/vswr.awk
+alias vswr pipe hget RfPort=[^R] vswrValue@returnLoss | $gawk -f ~/eric/handbook/vswr.awk
+
