@@ -1,4 +1,4 @@
-# MoshellBible
+# MoshellHandbook
 
 plan is to prep Moshell Quick 'snipit' like toosl and guides
 
