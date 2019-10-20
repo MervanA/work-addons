@@ -17,8 +17,8 @@ alias err te log read |grep ERROR:
 # here and there
 
 python=/usr/bin/python2
-logdir=${HOME}/eric/moshell_logfiles
-jarxmldir=${HOME}/eric/jarxml
+logdir=HOME/eric/moshell_logfiles
+jarxmldir=HOME/eric/jarxml
 
 #######################################################
 # Other Aliases
