@@ -1,6 +1,3 @@
-# MoshellHandbook
+# Moshell scripts, commands, knowladge dump, etc
 
-plan is to prep Moshell Quick 'snipit' like tools and guides
-
-
-make sure you have a working Moshell (some commands rquire v19+)
+make sure you have a working Moshell/AMOS (some commands rquire v19+)
