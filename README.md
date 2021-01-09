@@ -13,4 +13,4 @@ make sure you READ THE CODE !!!
 
 contact MervanA@git for questions.
 
-###everything is as is and is your responsibility for using it as such
+### everything is as is and it is your responsibility for using it as such
