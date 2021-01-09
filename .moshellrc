@@ -2,8 +2,9 @@
 #of supported user variables or print them using the "uv" command)
 #take off the # sign at beginning of line to uncomment
 
-#prompt_highlight=1
-#set_window_title=1
+#User variables settings (examples)
+prompt_highlight=1              #See info in moshell file
+set_window_title=1              #See info in moshell file
 
 #Alias examples:
 alias ter te log read
@@ -16,12 +17,9 @@ alias err te log read |grep ERROR:
 #######################################################
 # here and there
 
-python=/usr/bin/python2
-logdir=HOME/eric/moshell_logfiles
-jarxmldir=HOME/eric/jarxml
 
 #######################################################
 # Other Aliases
 
-alias vswr pipe hget RfPort=[^R] vswrValue@returnLoss | $gawk -f ~/eric/handbook/vswr.awk
-
+alias oldvswr pipe hget RfPort=[^R] vswrValue@returnLoss | $gawk -f ~/eric/mervana/vswr.awk
+alias convert5g run ~/eric/mervana/convert5g.mos
