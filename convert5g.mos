@@ -2,7 +2,7 @@ l+mmos /dev/null
 $ref = split($0)
 unset $0
 for $i = 3 to $split_last
-  if $split_last < 3 
+  if $split_last < 3
     !echo "=============================\n"
     !echo "input can't be empty, provide a frequency or an NR-ARFCN to convert from"
     break
@@ -10,14 +10,14 @@ for $i = 3 to $split_last
     $arfcn = $ref[$i]
     !echo "============================="
     !echo "NR-ARFCN to Frequency\n"
-    $FREQ = `$gawk -v ARFCN=$arfcn -v OPT=NRref -f ~/eric/mervana/convert5g.awk`
-    !echo "NR-ARFCN:" $arfcn "== MHz:" $FREQ
+    $FREQ[$arfcn] = `$gawk -v ARFCN=$arfcn -v OPT=NRref -f ~/eric/addon/convert5g.awk`
+    !echo "NR-ARFCN:" $arfcn "== MHz:" $FREQ[$arfcn]
   else if $ref[$i] ~ ^[0-9]{3,5}(\.[0-9]{1,2})?$
     $frequency = $ref[$i]
     !echo "============================="
     !echo "Frequency to NR-ARFCN\n"
-    $ARFCN = `$gawk -v FREQ=$frequency -v OPT=FQref -f ~/eric/mervana/convert5g.awk`
-    !echo "MHz:" $frequency "== NR-ARFCN:" $ARFCN
+    $ARFCN[$frequency] = `$gawk -v FREQ=$frequency -v OPT=FQref -f ~/eric/addon/convert5g.awk`
+    !echo "MHz:" $frequency "== NR-ARFCN:" $ARFCN[$frequency]
   else
     !echo "=============================\n"
     !echo "niether a frequency nor an NR-ARFCN !"
