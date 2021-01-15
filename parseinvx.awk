@@ -1,13 +1,13 @@
 # simple invx vswr value parser
 # all values above 1.4 will be saved in highvswr.csv file
 # all values will be saved in sector_vswr.csv
-
+# currently works with command "pipe invx | $gawk -v NN=$nodename -f /PATH/shared/TO/parseinvx.awk" as you need the NodeName NN
 BEGIN{
     OFS = ";";
     shorterdate=strftime("%y%m%d-%H",systime());
     longdate=strftime("%y%m%d-%H%M%S",systime());
-    high_file = "/home/fstick/highvswr-"shorterdate".csv";
-    all_file = "/home/fstick/sector_vswr-"shorterdate".csv";
+    high_file = "/PATH/shared/TO/highvswr-"shorterdate".csv";
+    all_file = "/PATH/shared/TO/sector_vswr-"shorterdate".csv";
 }
 
 /VSWR/{
