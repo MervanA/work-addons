@@ -30,7 +30,7 @@ BEGIN{
     if (vval ~ "[0-9]" ){
         print NN, sval, vval, longdate >> all_file
     }
-    if (vval > 1.4 && vval ~ "[0-9]" ){
+    if (vval > 1.40 && vval ~ "[0-9]" ){
         print NN, sval, vval, longdate >> high_file
     }
 }
