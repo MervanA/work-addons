@@ -20,4 +20,4 @@ else
   $whichenm = NARNIA
 fi
 
-pipe invx | $gawk -v NN=$nodename -v ENM=$whichenm -f /home/shared/erc_os/parseinvx.awk
+pipe invx | $gawk -v NN=$nodename -v ENM=$whichenm -f /PATH/shared/TO/parseinvx.awk
