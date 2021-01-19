@@ -1,0 +1,23 @@
+# prepare ENM prefix and run invx parser
+# 
+# 
+# 
+# written by MervanA@git
+
+$split_separator = .
+$enmipz = split($ws_ip)
+unset $split_separator
+
+if $enmipz[2] = 201 && $enmipz[3] = 88
+  $whichenm = HB
+else if $enmipz[2] = 224 && $enmipz[3] = 28
+  $whichenm = HG
+else if $enmipz[2] = 224 && $enmipz[3] = 24
+  $whichenm = HM
+else if $enmipz[2] = 201 && $enmipz[3] = 40
+  $whichenm = HL
+else
+  $whichenm = NARNIA
+fi
+
+pipe invx | $gawk -v NN=$nodename -v ENM=$whichenm -f /PATH/shared/TO/parseinvx.awk
