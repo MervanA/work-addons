@@ -1,3 +1,8 @@
+# convert NR nref to fref and vice versa
+# 
+# 
+# 
+# written by MervanA@git
 BEGIN{
 #### NR-ARFCN to Frequency 
     if (OPT ~ /NRref/){
