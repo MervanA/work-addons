@@ -1,3 +1,8 @@
+# convert NR nref to fref and vice versa
+# 
+# 
+# 
+# written by MervanA@git
 l+mmos /dev/null
 $ref = split($0)
 unset $0
