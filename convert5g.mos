@@ -1,8 +1,11 @@
 # convert NR nref to fref and vice versa
-# 
-# 
-# 
+# script is written so it can be run in a mobatch, fucntioned, looped, aliased etc
+# from NR-ARFCN to FREQ input is in range of 6 or 7 digits
+# from FREQ to NR-ARFCN input is in range of 3 to 5 digits and can be float with 2 floating points max
+# run script INPUT
+#
 # written by MervanA@git
+
 l+mmos /dev/null
 $ref = split($0)
 unset $0
