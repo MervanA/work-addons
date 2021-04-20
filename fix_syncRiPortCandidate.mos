@@ -1,0 +1,73 @@
+# correctly set NodeGroupSyncMember syncRiPortCandidate attritubte
+# will work correctly if isSharedWithExternalMe is correctly set to True
+# 
+# 20/04/2021
+# written by MervanA@git
+l+mmso /dev/null
+confbl+
+# find which is shared
+ma targetgroup FieldReplaceableUnit isSharedWithExternalMe true
+for $mo in targetgroup
+  $rdn = rdn($mo)
+  $link2 = $rdn,RiPort=DATA_2
+  ma sourcegroup Equipment=1,RiLink= riPortRef $link2
+done
+####
+func recursiveref
+  for $mo in recursivegroup$numref
+    get $mo riPortRef1 > $Ref1
+    if $Ref1 ~ FieldReplaceableUnit=1,
+      $syncRef = $Ref1 $syncRef
+      mr sourcegroup $mo
+    else if $Ref1 !~ FieldReplaceableUnit=1,
+      $mainRef = $Ref1 -s .$ -r 1
+      $numref = $numref + 1
+      ma recursivegroup$numref Equipment=1,RiLink= riPortRef2 $mainRef
+    fi
+  done
+endfunc
+####
+$syncRef = 
+$numref = 0
+for $mo in sourcegroup
+  get $mo riPortRef1 > $Ref1
+  if $Ref1 ~ FieldReplaceableUnit=1,
+    $syncRef = $Ref1 $syncRef
+    mr sourcegroup $mo
+  else if $Ref1 !~ FieldReplaceableUnit=1,
+    $mainRef = $Ref1 -s .$ -r 1
+    ma recursivegroup$numref Equipment=1,RiLink= riPortRef2 $mainRef
+  fi
+done
+####
+for $numref = $numref to 6
+  pr recursivegroup$numref
+  if $nr_of_mos > 0
+    recursiveref
+  else
+    break
+  fi
+done
+####
+# set sycn
+pr NodeGroupSyncMember=1
+if $nr_of_mos = 0
+  cr Transport=1,Synchronization=1,RadioEquipmentClock=1,NodeGroupSyncMember=1
+  1
+  $syncRef
+  ldeb Transport=1,Synchronization=1,RadioEquipmentClock=1,NodeGroupSyncMember=1
+else
+  set RadioEquipmentClock=1,NodeGroupSyncMember=1 syncRiPortCandidate $syncRef
+fi
+#cleanup
+mr targetgroup
+mr sourcegroup
+mr recursivegroup0
+mr recursivegroup1
+mr recursivegroup2
+mr recursivegroup3
+mr recursivegroup4
+mr recursivegroup5
+mr recursivegroup6
+unset all
+l-
