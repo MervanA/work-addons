@@ -40,7 +40,7 @@ for $mo in sourcegroup
   fi
 done
 ####
-for $numref = $numref to 6
+for $numref = $numref to 5
   pr recursivegroup$numref
   if $nr_of_mos > 0
     recursiveref
@@ -49,7 +49,7 @@ for $numref = $numref to 6
   fi
 done
 ####
-# set sycn
+# set syncRef
 pr NodeGroupSyncMember=1
 if $nr_of_mos = 0
   cr Transport=1,Synchronization=1,RadioEquipmentClock=1,NodeGroupSyncMember=1
@@ -68,6 +68,5 @@ mr recursivegroup2
 mr recursivegroup3
 mr recursivegroup4
 mr recursivegroup5
-mr recursivegroup6
 unset all
 l-
