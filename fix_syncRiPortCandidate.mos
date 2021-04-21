@@ -56,12 +56,12 @@ if $nr_of_mos = 0
   cr Transport=1,Synchronization=1,RadioEquipmentClock=1,NodeGroupSyncMember=1
   1
   $syncRef
-  ldeb Transport=1,Synchronization=1,RadioEquipmentClock=1,NodeGroupSyncMember=1
+  deb Transport=1,Synchronization=1,RadioEquipmentClock=1,NodeGroupSyncMember=1
 else
   l-
-  lbl ldeb Transport=1,Synchronization=1,RadioEquipmentClock=1,NodeGroupSyncMember=1
+  bl Transport=1,Synchronization=1,RadioEquipmentClock=1,NodeGroupSyncMember=1
   set RadioEquipmentClock=1,NodeGroupSyncMember=1 syncRiPortCandidate $syncRef
-  ldeb ldeb Transport=1,Synchronization=1,RadioEquipmentClock=1,NodeGroupSyncMember=1
+  deb Transport=1,Synchronization=1,RadioEquipmentClock=1,NodeGroupSyncMember=1
 fi
 l+mmos /dev/null
 #cleanup
