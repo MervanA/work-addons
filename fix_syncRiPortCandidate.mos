@@ -1,9 +1,9 @@
-# correctly set NodeGroupSyncMember syncRiPortCandidate attritubte
-# will work correctly if isSharedWithExternalMe is correctly set to True
-# 
-# 20/04/2021
-# written by MervanA@git
 l+mmso /dev/null
+# correctly set NodeGroupSyncMember syncRiPortCandidate attritubte
+# conditions: shared Radio Unit isSharedWithExternalMe set to true & RiLink is configured with DATA_2
+# 
+# 22/04/2021
+# written by MervanA@git
 confbl+
 # find which is shared
 ma targetgroup FieldReplaceableUnit isSharedWithExternalMe true
@@ -52,13 +52,16 @@ done
 # set syncRef
 pr NodeGroupSyncMember=1
 if $nr_of_mos = 0
+  l-
   cr Transport=1,Synchronization=1,RadioEquipmentClock=1,NodeGroupSyncMember=1
   1
   $syncRef
   ldeb Transport=1,Synchronization=1,RadioEquipmentClock=1,NodeGroupSyncMember=1
 else
+  l-
   set RadioEquipmentClock=1,NodeGroupSyncMember=1 syncRiPortCandidate $syncRef
 fi
+l+mmos /dev/null
 #cleanup
 mr targetgroup
 mr sourcegroup
