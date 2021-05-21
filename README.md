@@ -1,9 +1,4 @@
-# MOSHELL Bible
 ## Moshell scripts, commands, knowladge dump, etc
-
-make sure you have a working Moshell/AMOS (some commands require v19+)
-
-make sure you update your paths accordingly after reviewing scripts/commands
 
 > **make sure you READ the code !**
 
