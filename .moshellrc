@@ -21,5 +21,5 @@ alias err te log read |grep ERROR:
 #######################################################
 # Other Aliases
 
-alias oldvswr pipe hget RfPort=[^R] vswrValue@returnLoss | $gawk -f ~/eric/mervana/vswr.awk
-alias convert5g run ~/eric/mervana/convert5g.mos
+alias oldvswr pipe hget RfPort=[^R] vswrValue@returnLoss | $gawk -f ~/eric/moshell-addons/vswr.awk
+alias convert5g run ~/eric/moshell-addons/convert5g.mos
