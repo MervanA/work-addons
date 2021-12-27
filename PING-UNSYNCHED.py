@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 
 '''
-run using:  python3.5 /PATH/TO/unsyncPing.py
+run using:  python3.5 /PATH/TO/PING-UNSYNCHED.py
 
 purpose:    List and Ping UNSYNCHRONIZED NODES in an Ericsson ENM, valid for
             RBS, ERBS, RadioNode and PICO nodes
 
 
-Date:       24/12/2021
+Date:       27/12/2021
 Author:     MervanA@github
 Licesne:    MIT License
 '''
@@ -20,8 +20,10 @@ import time
 import re
 
 # Result file time stamp
+globalProperties = open("/ericsson/tor/data/global.properties", 'r').read()
+enm_short_name = re.search("(?m)PKI_EntityProfile_DN_ORGANIZATION_UNIT=(.*)$", globalProperties).group(1)
 timestr = time.strftime("%Y%m%d-%H")
-unsyncResultFile = 'unsyncNodePing_{}.txt'.format(timestr)
+unsyncResultFile = 'UNSYNCHED-PING-{}_{}.txt'.format(enm_short_name, timestr)
 
 
 # Ping and output function
@@ -51,17 +53,17 @@ def getUnsyncList():
 
 
 # Get RBS, ERBS, RadioNode and MSRBS_1(PICO) nodes OAM IP address and run ping
-def pingNodeIp(nodeName, nodeType, ossPrefix):
+def getNodeIp(nodeName, nodeType, ossPrefix):
     global nodeIp
     session = enmscripting.open()
     if str(nodeType) == 'RBS' or str(nodeType) == 'ERBS':
-        command = 'cmedit get NetworkElement=' + str(nodeName) + ',CppConnectivityInformation=1 --table'
+        command = 'cmedit get NetworkElement={},CppConnectivityInformation=1 --table'.format(str(nodeName))
         response = session.command().execute(command)
         for line in response.get_output().groups()[0]:
             nodeIp = str(line[4])
             ping(nodeName, nodeType, nodeIp, ossPrefix)
     elif str(nodeType) == 'RadioNode' or str(nodeType) == 'MSRBS_V1':
-        command = 'cmedit get NetworkElement=' + str(nodeName) + ',ComConnectivityInformation=1 --table'
+        command = 'cmedit get NetworkElement={},ComConnectivityInformation=1 --table'.format(str(nodeName))
         response = session.command().execute(command)
         for line in response.get_output().groups()[0]:
             nodeIp = str(line[4])
@@ -69,18 +71,18 @@ def pingNodeIp(nodeName, nodeType, ossPrefix):
     enmscripting.close(session)
 
 
-# Get UNSYNCHRONIZED node info and run pingNodeIp function
+# Get UNSYNCHRONIZED node info and run getNodeIp function
 def getNodeInfo():
     session = enmscripting.open()
     for node in nodeList:
-        command = 'cmedit get NetworkElement=' + str(node) + ' --attribute neType,ossPrefix --table'
+        command = 'cmedit get NetworkElement={} --attribute neType,ossPrefix --table'.format(node)
         response = session.command().execute(command)
         for line in response.get_output().groups()[0]:
             nodeName = line[0]
             nodeType = line[1]
             ossPrefix = line[2]
             ossPrefix = re.sub(r',MeContext=.*', '', str(ossPrefix))
-            pingNodeIp(nodeName, nodeType, ossPrefix)
+            getNodeIp(nodeName, nodeType, ossPrefix)
     enmscripting.close(session)
     with open(unsyncResultFile, '+r') as f:
         lines = f.readlines()
