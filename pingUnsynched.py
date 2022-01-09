@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 '''
-run using:  python3.5 /PATH/TO/PING-UNSYNCHED.py
+run using:  python3.5 /PATH/TO/pingUnsynched.py
 
 purpose:    List and Ping UNSYNCHRONIZED NODES in an Ericsson ENM, valid for
             RBS, ERBS, RadioNode and PICO nodes
